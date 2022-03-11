@@ -1,0 +1,12 @@
+.bi-github {
+    font-size: 35pt;
+    color: white;
+}
+
+.bi-github:hover {
+    color: black;
+}
+
+.fundo {
+    background-color: #B9A4BD;
+}
