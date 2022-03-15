@@ -18,14 +18,19 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
+  tituloPost: string
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
+  nomeTema: string
 
   usuario: Usuario = new Usuario()
   idUsuario = environment.id
   
+  //para ordenar as postagens por data mais recente 
+  key = "data"
+  reverse = true
 
   constructor(
     private router: Router,
@@ -44,11 +49,39 @@ export class InicioComponent implements OnInit {
     this.findAllPostagens()
   }
 
+  findAllPostagens(){
+    this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=>{
+      this.listaPostagens = resp
+    })
+  }
+
+  findByTituloPostagem(){
+
+    if(this.tituloPost == ''){
+      this.findAllPostagens()
+    } else{
+        this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[])=>{
+        this.listaPostagens = resp
+      })
+    }
+  }
+
   findAllTemas(){
     this.temaService.getAllTema().subscribe((resp: Tema[])=>{
       this.listaTemas = resp
     })
   }
+
+  findByDescricaoTema(){
+    if(this.nomeTema == ''){
+      this.findAllTemas()
+    } else{
+        this.temaService.getByDescricaoTema(this.nomeTema).subscribe((resp: Tema[])=>{
+        this.listaTemas = resp
+      })
+    }
+  }
+  
 
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario)=> {
@@ -59,12 +92,6 @@ export class InicioComponent implements OnInit {
   findByIdTema(){
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
       this.tema = resp
-    })
-  }
-
-  findAllPostagens(){
-    this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=>{
-      this.listaPostagens = resp
     })
   }
 
