@@ -39,14 +39,12 @@
             <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Descrição</th>
                     <th scope="col" class="text-right">Modificações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of listaTemas">
-                    <th>{{item.id}}</th>
                     <td>{{item.descricao}}</td>
                     <td class="d-flex justify-content-end"> 
                       <button class="btn btn-outline-info mr-3" [routerLink]="['/tema-edit',item.id]">Editar</button>
