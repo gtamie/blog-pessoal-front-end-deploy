@@ -1,0 +1,15 @@
+.fundo{
+    background-image: url("https://imgur.com/1jidHbl.jpg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cor{
+    color: #473f47!important;
+    
+}
+
+a{
+    text-decoration: none;
+}

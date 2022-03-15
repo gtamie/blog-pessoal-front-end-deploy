@@ -1,0 +1,8 @@
+.fundo{
+  background-color: #dadbdd;
+}
+
+.container-fluid{
+    display: inline-block;
+    position: relative;
+}
